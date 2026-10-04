@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BookEase makes it simple to book hair, beauty, cleaning and IT support services online.">
 
     <title>BookEase - Service Booking</title>
 
@@ -14,24 +15,21 @@
 
     <!-- Header -->
     <header>
-
         <h1>BookEase</h1>
 
-        <nav>
-            <a href="index.html">Home</a>
+        <nav aria-label="Main navigation">
+            <a href="index.html" aria-current="page">Home</a>
             <a href="services.html">Services</a>
             <a href="index.html#about">About</a>
             <a href="index.html#contact">Contact</a>
         </nav>
-
     </header>
 
 
-    <!-- Hero Section -->
     <main>
 
+        <!-- Hero Section -->
         <section class="hero">
-
             <h2>Book Your Service With Ease</h2>
 
             <p>
@@ -39,63 +37,24 @@
                 with BookEase.
             </p>
 
-            <a href="booking.html">
-                <button>Book Now</button>
-            </a>
-
+            <a class="btn" href="booking.html">Book Now</a>
         </section>
 
 
-        <!-- Services Section -->
+        <!-- Services Section (cards are built by script.js from the services list) -->
         <section id="services">
-
             <h2>Our Services</h2>
 
-            <div class="services-container">
+            <div class="services-container" id="homeServices"></div>
 
-                <div class="service-card">
-
-                    <h3>Hair Services</h3>
-
-                    <p>
-                        Professional hair services including
-                        styling, cutting and treatments.
-                    </p>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <h3>Beauty Services</h3>
-
-                    <p>
-                        Personal beauty services designed to
-                        help you look and feel your best.
-                    </p>
-
-                </div>
-
-
-                <div class="service-card">
-
-                    <h3>Cleaning Services</h3>
-
-                    <p>
-                        Professional cleaning services for
-                        homes and offices.
-                    </p>
-
-                </div>
-
-            </div>
-
+            <p class="link-more">
+                <a class="btn" href="services.html">See prices and details</a>
+            </p>
         </section>
 
 
         <!-- About Section -->
         <section id="about">
-
             <h2>About BookEase</h2>
 
             <p>
@@ -103,13 +62,11 @@
                 system designed to make booking services
                 simple, convenient and organised.
             </p>
-
         </section>
 
 
         <!-- Contact Section -->
         <section id="contact">
-
             <h2>Contact Us</h2>
 
             <p>
@@ -117,8 +74,8 @@
                 BookEase team.
             </p>
 
-            <button>Contact Us</button>
-
+            <!-- Replace with your real email address -->
+            <a class="btn" href="mailto:info@bookease.example">Email Us</a>
         </section>
 
     </main>
@@ -126,11 +83,7 @@
 
     <!-- Footer -->
     <footer>
-
-        <p>
-            &copy; 2026 BookEase. All rights reserved.
-        </p>
-
+        <p>&copy; 2026 BookEase. All rights reserved.</p>
     </footer>
 
 

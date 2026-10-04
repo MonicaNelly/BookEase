@@ -1,3 +1,26 @@
+/* ==========================================================
+   BookEase - style.css
+   ========================================================== */
+
+/* ---------- Design tokens ---------- */
+:root {
+    --color-dark: #1f2937;
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-bg: #f5f7fb;
+    --color-surface: #ffffff;
+    --color-text: #333333;
+    --color-muted: #666666;
+    --color-border: #d1d5db;
+    --color-success-bg: #ecfdf5;
+    --color-success-border: #10b981;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --shadow-card: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- Base ---------- */
 * {
     margin: 0;
     padding: 0;
@@ -6,11 +29,20 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f7fb;
-    color: #333;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
 }
+
+/* Keyboard focus: visible for everyone who needs it */
+:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ---------- Header and navigation ---------- */
 header {
-    background-color: #1f2937;
+    background-color: var(--color-dark);
     color: white;
     padding: 20px 8%;
     display: flex;
@@ -31,13 +63,41 @@ nav a {
     color: white;
     text-decoration: none;
     font-size: 16px;
+    padding-bottom: 2px;
 }
 
 nav a:hover {
     text-decoration: underline;
 }
+
+/* Current page indicator */
+nav a[aria-current="page"] {
+    border-bottom: 2px solid white;
+}
+
+/* ---------- Buttons (<button> and <a class="btn">) ---------- */
+button,
+.btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* ---------- Hero ---------- */
 .hero {
-    background-color: white;
+    background-color: var(--color-surface);
     text-align: center;
     padding: 100px 20px;
 }
@@ -45,27 +105,17 @@ nav a:hover {
 .hero h2 {
     font-size: 42px;
     margin-bottom: 20px;
-    color: #1f2937;
+    color: var(--color-dark);
 }
 
 .hero p {
     font-size: 18px;
-    color: #666;
-    margin-bottom: 30px;
-}
-button {
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
+    color: var(--color-muted);
+    max-width: 600px;
+    margin: 0 auto 30px;
 }
 
-button:hover {
-    background-color: #1d4ed8;
-}
+/* ---------- Services ---------- */
 #services {
     padding: 70px 8%;
     text-align: center;
@@ -74,7 +124,7 @@ button:hover {
 #services h2 {
     font-size: 32px;
     margin-bottom: 40px;
-    color: #1f2937;
+    color: var(--color-dark);
 }
 
 .services-container {
@@ -85,25 +135,48 @@ button:hover {
 }
 
 .service-card {
-    background-color: white;
+    background-color: var(--color-surface);
     width: 280px;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card h3 {
     font-size: 21px;
     margin-bottom: 15px;
-    color: #1f2937;
+    color: var(--color-dark);
 }
 
 .service-card p {
-    color: #666;
+    color: var(--color-muted);
     margin-bottom: 15px;
 }
+
+.service-card .service-price {
+    color: var(--color-dark);
+    margin-bottom: 4px;
+}
+
+.service-card .service-meta {
+    font-size: 14px;
+}
+
+/* Keeps the "Book Service" buttons lined up at the bottom of each card */
+.service-card .btn {
+    margin-top: auto;
+    align-self: center;
+}
+
+.link-more {
+    margin-top: 35px;
+}
+
+/* ---------- About ---------- */
 #about {
-    background-color: white;
+    background-color: var(--color-surface);
     padding: 70px 8%;
     text-align: center;
 }
@@ -111,35 +184,136 @@ button:hover {
 #about h2 {
     font-size: 32px;
     margin-bottom: 20px;
-    color: #1f2937;
+    color: var(--color-dark);
 }
 
 #about p {
     max-width: 700px;
     margin: 0 auto;
-    color: #666;
+    color: var(--color-muted);
 }
+
+/* ---------- Contact ---------- */
 #contact {
     padding: 70px 8%;
     text-align: center;
-    background-color: #f5f7fb;
+    background-color: var(--color-bg);
 }
 
 #contact h2 {
     font-size: 32px;
     margin-bottom: 15px;
+    color: var(--color-dark);
 }
 
 #contact p {
     margin-bottom: 25px;
-    color: #666;
+    color: var(--color-muted);
 }
+
+/* ---------- Footer ---------- */
 footer {
-    background-color: #1f2937;
+    background-color: var(--color-dark);
     color: white;
     text-align: center;
     padding: 25px;
 }
+
+/* ---------- Booking page ---------- */
+.booking-section {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 40px;
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+}
+
+.booking-section h2 {
+    text-align: center;
+    font-size: 32px;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.booking-section > p {
+    text-align: center;
+    color: var(--color-muted);
+    margin-bottom: 35px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+/* Border colour change plus the global focus ring */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-hint {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--color-muted);
+}
+
+.booking-section button[type="submit"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Confirmation shown after a booking is submitted */
+.confirmation {
+    background-color: var(--color-success-bg);
+    border-left: 5px solid var(--color-success-border);
+    border-radius: var(--radius-sm);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.confirmation[hidden] {
+    display: none;
+}
+
+.confirmation h3 {
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.confirmation dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 15px;
+}
+
+.confirmation dt {
+    font-weight: bold;
+}
+
+/* ---------- Mobile ---------- */
 @media (max-width: 768px) {
 
     header {
@@ -169,70 +343,9 @@ footer {
         width: 90%;
         max-width: 350px;
     }
-}
-.booking-section {
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 40px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-.booking-section h2 {
-    text-align: center;
-    font-size: 32px;
-    color: #1f2937;
-    margin-bottom: 10px;
-}
-
-.booking-section > p {
-    text-align: center;
-    color: #666;
-    margin-bottom: 35px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #2563eb;
-}
-
-.form-group textarea {
-    resize: vertical;
-}
-
-.booking-section button {
-    width: 100%;
-    margin-top: 10px;
-}
-@media (max-width: 768px) {
 
     .booking-section {
         width: 90%;
         padding: 25px;
     }
-
 }

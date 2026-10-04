@@ -1,218 +1,136 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request an appointment with BookEase.">
 
+    <title>BookEase - Make a Booking</title>
 
-<title>BookEase - Make a Booking</title>
-
-<link rel="stylesheet" href="style.css">
-
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- Header -->
+    <header>
+        <h1>BookEase</h1>
 
-<!-- Header -->
-<header>
-
-    <h1>BookEase</h1>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
-
-</header>
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
 
 
-<!-- Booking Section -->
-<main>
+    <!-- Booking Section -->
+    <main>
 
-    <section class="booking-section">
+        <section class="booking-section">
 
-        <h2>Make a Booking</h2>
+            <h2>Make a Booking</h2>
 
-        <p>
-            Complete the form below to request your appointment.
-        </p>
+            <p>Complete the form below to request your appointment.</p>
 
+            <!-- Filled in by script.js after a successful submit -->
+            <div class="confirmation" id="bookingConfirmation" role="status" tabindex="-1" hidden></div>
 
-        <form id="bookingForm">
+            <form id="bookingForm">
 
-            <!-- Name -->
-            <div class="form-group">
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+                </div>
 
-                <label for="name">
-                    Full Name
-                </label>
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+                </div>
 
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Enter your full name"
-                    required
-                >
+                <!-- Phone (South African formats, e.g. 082 123 4567 or +27 82 123 4567) -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        placeholder="e.g. 082 123 4567"
+                        autocomplete="tel"
+                        pattern="(\+27|0)[0-9 ]{9,12}"
+                        title="Enter a South African number, for example 082 123 4567 or +27 82 123 4567"
+                        required
+                    >
+                </div>
 
-            </div>
+                <!-- Service (options are added by script.js) -->
+                <div class="form-group">
+                    <label for="service">Select Service</label>
+                    <select id="service" name="service" aria-describedby="serviceInfo" required>
+                        <option value="">-- Select a Service --</option>
+                    </select>
+                    <p class="form-hint" id="serviceInfo"></p>
+                </div>
 
+                <!-- Date (earliest date is set to today by script.js) -->
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
 
-            <!-- Email -->
-            <div class="form-group">
+                <!-- Time (limits are set from the business hours in script.js) -->
+                <div class="form-group">
+                    <label for="time">Preferred Time</label>
+                    <input type="time" id="time" name="time" required>
+                    <p class="form-hint">Bookings are available Monday to Saturday, 08:00 to 17:00.</p>
+                </div>
 
-                <label for="email">
-                    Email Address
-                </label>
+                <!-- Message -->
+                <div class="form-group">
+                    <label for="message">Additional Message (optional)</label>
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="5"
+                        placeholder="Tell us anything we should know..."
+                    ></textarea>
+                </div>
 
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Enter your email"
-                    required
-                >
+                <!-- Submit -->
+                <button type="submit">Submit Booking</button>
 
-            </div>
+            </form>
 
+        </section>
 
-            <!-- Phone -->
-            <div class="form-group">
-
-                <label for="phone">
-                    Phone Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="Enter your phone number"
-                    required
-                >
-
-            </div>
-
-
-            <!-- Service -->
-            <div class="form-group">
-
-                <label for="service">
-                    Select Service
-                </label>
-
-                <select
-                    id="service"
-                    name="service"
-                    required
-                >
-
-                    <option value="">
-                        -- Select a Service --
-                    </option>
-
-                    <option value="Hair Services">
-                        Hair Services
-                    </option>
-
-                    <option value="Beauty Services">
-                        Beauty Services
-                    </option>
-
-                    <option value="Cleaning Services">
-                        Cleaning Services
-                    </option>
-
-                    <option value="IT Support">
-                        IT Support
-                    </option>
-
-                </select>
-
-            </div>
+    </main>
 
 
-            <!-- Date -->
-            <div class="form-group">
-
-                <label for="date">
-                    Preferred Date
-                </label>
-
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    required
-                >
-
-            </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 BookEase. All rights reserved.</p>
+    </footer>
 
 
-            <!-- Time -->
-            <div class="form-group">
-
-                <label for="time">
-                    Preferred Time
-                </label>
-
-                <input
-                    type="time"
-                    id="time"
-                    name="time"
-                    required
-                >
-
-            </div>
-
-
-            <!-- Message -->
-            <div class="form-group">
-
-                <label for="message">
-                    Additional Message
-                </label>
-
-                <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Tell us anything we should know..."
-                ></textarea>
-
-            </div>
-
-
-            <!-- Submit -->
-            <button type="submit">
-                Submit Booking
-            </button>
-
-        </form>
-
-    </section>
-
-</main>
-
-
-<!-- Footer -->
-<footer>
-
-    <p>
-        &copy; 2026 BookEase. All rights reserved.
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 
 </body>
 
