@@ -1,0 +1,20 @@
+
+# .NET generated files
+**/bin/
+**/obj/
+
+# Local development settings
+**/appsettings.Development.json
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+# Local Postman workspace settings
+.postman/
+postman/globals/
